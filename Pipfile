@@ -1,0 +1,22 @@
+[[source]]
+url        = "https://pypi.org/simple"
+verify_ssl = true
+name       = "pypi"
+
+[packages]
+ansible      = "~=4.1"
+pybatfish    = "*"
+pyyaml       = "*"
+requests     = "*"
+gspread      = "*"
+oauth2client = "*"
+pynetbox     = "*"
+paramiko     = "*"
+ncclient     = "*"
+
+[dev-packages]
+
+[requires]
+
+[scripts]
+poweroff = 'ansible-playbook -v site.yml'
