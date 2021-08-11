@@ -7,18 +7,10 @@
   connection: network_cli
   junos_netconf:
 
-#- name: Shut down all Routing Engine
-#  connection: netconf
-#  juniper.device.system:
-#    action: "shutdown"
-#    all_re: True
-#  register: result
-
 - name: Shut down all Routing Engine
   connection: netconf
-  juniper_junos_system:
-    action: "shutdown"
-    all_re: True
+  junos_command:
+    - request system power-off
 
 - name: Print response
   debug:

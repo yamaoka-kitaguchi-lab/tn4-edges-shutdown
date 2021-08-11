@@ -5,10 +5,8 @@ name       = "pypi"
 
 [packages]
 ansible     = "~=4.1"
-pyyaml      = "*"
 paramiko    = "*"
 ncclient    = "*"
-#junos-eznc  = "*"  # You may have to install it for Python2 (via pip2)
 
 [dev-packages]
 
