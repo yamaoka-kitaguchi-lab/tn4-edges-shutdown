@@ -3,5 +3,10 @@
   hosts: all
   gather_facts: no
 
+  vars_prompt:
+    - name: poweroff_confirmation
+      prompt: "All the listed edge SWs will be down. Enter 'yes' to continue"
+      private: no
+
   roles:
     - role: juniper

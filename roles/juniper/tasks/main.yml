@@ -1,15 +1,19 @@
 ---
-- name: Display all variables and facts known for a host
-  debug:
-    var: hostvars[inventory_hostname]
-  tags:
-    - develop
+- name: Confirmation check
+  fail: msg="Playbook run confirmation failed"
+  when: poweroff_confirmation != "yes"
 
 - name: Enable NETCONF
   connection: network_cli
   junos_netconf:
 
-- name: Power off all JUNOS devices
+- name: Shut down all Routing Engine
   connection: netconf
   juniper.device.system:
     action: "shutdown"
+    all_re: True
+  register: result
+
+- name: Print response
+  debug:
+    var: result
