@@ -5,14 +5,10 @@ name       = "pypi"
 
 [packages]
 ansible      = "~=4.1"
-pybatfish    = "*"
 pyyaml       = "*"
-requests     = "*"
-gspread      = "*"
-oauth2client = "*"
-pynetbox     = "*"
 paramiko     = "*"
 ncclient     = "*"
+junos-eznc   = "*"
 
 [dev-packages]
 
