@@ -16,8 +16,9 @@
 
 - name: Shut down all Routing Engine
   connection: netconf
-  junos_shutdown:
-    shutdown: "shutdown"
+  juniper_junos_system:
+    action: "shutdown"
+    all_re: True
 
 - name: Print response
   debug:
