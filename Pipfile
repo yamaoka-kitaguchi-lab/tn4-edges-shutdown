@@ -19,4 +19,6 @@ ncclient     = "*"
 [requires]
 
 [scripts]
-poweroff = 'ansible-playbook -v site.yml'
+install  = "ansible-galaxy collection install juniper.device"
+dryrun   = "ansible-playbook -vvvv --check site.yml"
+poweroff = "ansible-playbook -v site.yml"
