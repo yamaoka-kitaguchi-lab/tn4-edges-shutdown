@@ -10,7 +10,8 @@
 - name: Shut down all Routing Engine
   connection: netconf
   junos_command:
-    - request system power-off
+    commands:
+      - request system power-off
   register: result
 
 - name: Print response
