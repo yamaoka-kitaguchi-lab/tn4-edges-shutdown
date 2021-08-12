@@ -3,17 +3,29 @@
   fail: msg="Playbook run confirmation failed"
   when: poweroff_confirmation != "yes"
 
-- name: Enable NETCONF
+## junos_command can't handle interactive confirmation
+## See: https://github.com/ansible/ansible/issues/50510
+
+#- name: Enable NETCONF
+#  connection: network_cli
+#  junos_netconf:
+#
+#- name: Shut down all Routing Engine
+#  connection: netconf
+#  junos_command:
+#    commands:
+#      - request system power-off all-members in 0
+#  register: result
+#
+#- name: Print response
+#  debug:
+#    var: result
+
+- name: Shut down all Routing Engines
   connection: network_cli
-  junos_netconf:
-
-- name: Shut down all Routing Engine
-  connection: netconf
-  junos_command:
-    commands:
-      - request system power-off
-  register: result
-
-- name: Print response
-  debug:
-    var: result
+  cli_command:
+    command: request system power-off all-members
+    prompt:
+      - "(no)"
+    answer:
+      - "yes"
